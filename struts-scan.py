@@ -49,7 +49,7 @@ class struts_baseverify:
             cprint("目标不存在" + pocname +"漏洞..", "green")
 
     def scan(self):
-        cprint("-------检测struts2漏洞--------", "cyan")
+        cprint("-------检测struts2漏洞--------\n目标url:"+self.url, "cyan")
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-005'], timeout=6, verify=False)
             self.check("struts2-005", req.text)
