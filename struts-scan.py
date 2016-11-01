@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding=utf-8
 # code by Lucifer
-
+'''
+使用方法: python struts-scan.py http://vuln.com/xxx.action/do
+         python struts-scan.py -f xxx.txt (批量扫描，每行一个)
+'''
 import sys
 import base64
 import warnings
