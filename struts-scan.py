@@ -88,68 +88,79 @@ class struts_baseverify:
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-005'], timeout=6, verify=False)
             self.check("struts2-005", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-005超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-009'], timeout=6, verify=False)
             self.check("struts2-009", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-009超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-013'], timeout=6, verify=False)
             self.check("struts2-013", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-013超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-016'], timeout=6, verify=False)
             self.check("struts2-016", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-016超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-019'], timeout=6, verify=False)
             self.check("struts2-019", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-019超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.get(self.url+self.poc['ST2-devmode'], headers=headers, timeout=6, verify=False)
             self.check("struts2-devmode", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-devmode超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.get(self.url+self.poc['ST2-032'], headers=headers, timeout=6, verify=False)
             self.check("struts2-032", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-032超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.get(self.url+self.poc['ST2-033'], headers=headers, timeout=6, verify=False)
             self.check("struts2-033", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-033超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.get(self.url+self.poc['ST2-037'], headers=headers, timeout=6, verify=False)
             self.check("struts2-037", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-037超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.get(self.url, headers=headers2, timeout=6, verify=False)
             self.check("struts2-045", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-045超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, data="", headers=headers3, timeout=6, verify=False)
             self.check("struts2-048", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-048超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req1 = requests.get(self.url+"?class[%27classLoader%27][%27jarPath%27]=1", headers=headers, timeout=6, verify=False)
@@ -158,8 +169,9 @@ class struts_baseverify:
                 cprint("目标存在struts2-020漏洞..(只提供检测)", "red")
             else:
                 cprint("目标不存在struts2-020漏洞..", "green")
-        except:
+        except Exception as e:
             cprint("检测struts2-020超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             req = requests.post(self.url, data=self.poc['ST2-052'], headers=headers_052, timeout=6, verify=False)
@@ -167,16 +179,18 @@ class struts_baseverify:
                 cprint("目标存在struts2-052漏洞..(需使用其他方式利用)", "red")
             else:
                 cprint("目标不存在struts2-052漏洞..", "green")
-        except:
+        except Exception as e:
             cprint("检测struts2-052超时..", "cyan")
+            print "超时原因: ", e
 
         try:
             param = raw_input("检测struts2-053漏洞,请指定参数: ")
             vulnurl = self.url + "?" + param + "=" + self.poc['ST2-053']
             req = requests.get(vulnurl, headers=headers, timeout=6, verify=False)
             self.check("struts2-053", req.text)
-        except:
+        except Exception as e:
             cprint("检测struts2-053超时..", "cyan")
+            print "超时原因: ", e
 
     def inShell(self, pocname):
         cprint('''
