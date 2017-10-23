@@ -1,0 +1,7 @@
+http://127.0.0.1:8078/struts2-rest-showcase/orders/3
+http://127.0.0.1:8078/struts2-rest-showcase/orders/3
+http://127.0.0.1:8078/struts2-rest-showcase/orders/3
+http://127.0.0.1:8078/struts2-showcase/index.action
+http://127.0.0.1:8078/struts2-rest-showcase/orders/3
+http://127.0.0.1:8078/struts2-showcase/index.action
+http://127.0.0.1:8078/struts2-mailreader/Welcome.do
