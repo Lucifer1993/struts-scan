@@ -50,3 +50,5 @@ ST2-053
 [+]兼容HTTP/1.0，修复了struts-045检测不准确的问题
 
 [+]struts2-046检测+利用
+
+[+]修改struts2-048的payload
