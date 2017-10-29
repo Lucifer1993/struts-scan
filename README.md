@@ -1,6 +1,9 @@
 # struts-scan
 快速检测struts命令执行漏洞，可批量。
 
+# 运行环境
+MAC/Linux下的Python2
+
 # 支持对以下版本的检测
 
 ST2-005
