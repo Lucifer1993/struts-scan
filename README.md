@@ -56,5 +56,7 @@ ST2-053
 
 [+]修改struts2-048的payload
 
+[+]针对某些超时的情况,注释掉 httplib.HTTPConnection._http_vsn = 10 和httplib.HTTPConnection._http_vsn_str = 'HTTP/1.0'这两行再测试一遍,因为有的可能不支持HTTP/1.0的协议。
+
 # 特别说明
 此工具仅限于漏洞验证，如若使用者引起相关的法律责任请自负，开发者不承担连带责任。
