@@ -1,0 +1,13 @@
+检测struts2漏洞: http://84.201.197.71/search-execute
+struts2-045 success!!!
+struts2-046 success!!!
+检测struts2漏洞: https://177.1.212.236/loginaction
+struts2-019 success!!!
+struts2-045 success!!!
+struts2-046 success!!!
+检测struts2漏洞: http://123.207.56.37/product/list
+struts2-016 success!!!
+struts2-devmode success!!!
+检测struts2漏洞: http://122.194.119.66/struts/login/loginAction_getValidateCode.action
+struts2-016 success!!!
+struts2-019 success!!!

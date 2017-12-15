@@ -59,5 +59,7 @@ ST2-053
 [+]针对某些超时的情况,注释掉 httplib.HTTPConnection._http_vsn = 10 和httplib.HTTPConnection._http_vsn_str = 'HTTP/1.0'这两行再测试一遍,因为有的可能不支持HTTP/1.0的协议。
 
 [+]增加linux和win的可执行文件,windows需要.NET环境。
+
+[+]增加写入文件功能,针对有漏洞的struts版本号会自动写入success.txt文件。
 # 特别说明
 此工具仅限于漏洞验证，如若使用者引起相关的法律责任请自负，开发者不承担连带责任。

@@ -67,12 +67,16 @@ class struts_baseverify:
     def check(self, pocname, vulnstr):
         if vulnstr.find("Active Internet connections") is not -1:
             cprint("目标存在" + pocname + "漏洞..[Linux]", "red")
+            filecontent.writelines(pocname+" success!!!"+"\n")
         elif vulnstr.find("Active Connections") is not -1:
             cprint("目标存在" + pocname + "漏洞..[Windows]", "red")
+            filecontent.writelines(pocname+" success!!!"+"\n")
         elif vulnstr.find("活动连接") is not -1:
             cprint("目标存在" + pocname + "漏洞..[Windows]", "red")
+            filecontent.writelines(pocname+" success!!!"+"\n")
         elif vulnstr.find("LISTEN") is not -1:
             cprint("目标存在" + pocname + "漏洞..[未知OS]", "red")
+            filecontent.writelines(pocname+" success!!!"+"\n")
         else:
             cprint("目标不存在" + pocname +"漏洞..", "green")
 
@@ -86,6 +90,8 @@ class struts_baseverify:
                                         Code by Lucifer.
             ''', 'cyan')
         cprint("-------检测struts2漏洞--------\n目标url:"+self.url, "cyan")
+        filecontent.writelines("检测struts2漏洞: "+self.url)
+        filecontent.write("\n")
         try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-005'], timeout=6, verify=False)
             self.check("struts2-005", req.text)
@@ -184,6 +190,7 @@ class struts_baseverify:
             req2 = requests.get(self.url+"?class[%27classLoader%27][%27resources%27]=1", headers=headers, timeout=6, verify=False)
             if req1.status_code == 200 and req2.status_code == 404:
                 cprint("目标存在struts2-020漏洞..(只提供检测)", "red")
+                filecontent.writelines("struts2-020 success!!!\n")
             else:
                 cprint("目标不存在struts2-020漏洞..", "green")
         except Exception as e:
@@ -194,6 +201,7 @@ class struts_baseverify:
             req = requests.post(self.url, data=self.poc['ST2-052'], headers=headers_052, timeout=6, verify=False)
             if req.status_code == 500 and r"java.security.Provider$Service" in req.text:
                 cprint("目标存在struts2-052漏洞..(参考metasploit中的struts2_rest_xstream模块)", "red")
+                filecontent.writelines("struts2-052 success!!!\n")
             else:
                 cprint("目标不存在struts2-052漏洞..", "green")
         except Exception as e:
@@ -433,6 +441,7 @@ class struts_baseverify:
                     sys.exit(1)
 
 if __name__ == "__main__":
+    filecontent = open("success.txt", "a+")
     try:
         if sys.argv[1] == "-f":
             with open(sys.argv[2]) as f:
