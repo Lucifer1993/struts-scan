@@ -222,6 +222,9 @@ class struts_baseverify:
             req = requests.get(self.url, timeout=6, verify=False, allow_redirects=True)
             if r"670592745" in req.url:
                 cprint("目标存在struts2-057漏洞..(只提供检测)", "red")
+                filecontent.writelines("struts2-057 success!!!\n")
+            else:
+                cprint("目标不存在struts2-057漏洞..(只提供检测)", "green")
         except:
             cprint("检测struts2-057超时..", "cyan")
             print "超时原因: ", e
