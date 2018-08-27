@@ -209,10 +209,19 @@ class struts_baseverify:
             print "超时原因: ", e
 
         try:
-            param = raw_input("检测struts2-053漏洞,请指定参数: ")
-            vulnurl = self.url + "?" + param + "=" + self.poc['ST2-053']
-            req = requests.get(vulnurl, headers=headers, timeout=6, verify=False)
-            self.check("struts2-053", req.text)
+            params = [
+                "id",
+                "name",
+                "filename",
+                "username",
+                "password",
+            ]
+            for param in params:
+                vulnurl = self.url + "?" + param + "=" + self.poc['ST2-053']
+                req = requests.get(vulnurl, headers=headers, timeout=6, verify=False)
+                tips = "检测struts2-053 post参数: " + param
+                cprint(tips)
+                self.check("struts2-053", req.text)
         except Exception as e:
             cprint("检测struts2-053超时..", "cyan")
             print "超时原因: ", e
